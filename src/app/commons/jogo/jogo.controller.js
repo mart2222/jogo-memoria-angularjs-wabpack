@@ -3,7 +3,7 @@ const angular = require("angular");
 const NOVOJOGO = "NOVOJOGO";
 const SELECAONOME = "SELECAONOME";
 const JOGOCOMPLETADO = "JOGOCOMPLETADO";
-const TOTALIMAGENS = 15;
+const TOTALIMAGENS = 2;
 
 module.exports = Controller;
 
@@ -22,6 +22,7 @@ function Controller($scope, StorageService) {
   //métodos externos
   vm.iniciarNovoJogo = iniciarNovoJogo;
   vm.selecionaCarta = selecionaCarta;
+  vm.isRodada = isRodada;
 
   init();
 
@@ -31,6 +32,7 @@ function Controller($scope, StorageService) {
     vm.JOGOCOMPLETADO = JOGOCOMPLETADO;
     vm.estado = vm.SELECAONOME;
     carregaImagens();
+    getTipo();
   }
 
   function zeraVariaveis() {
@@ -38,6 +40,15 @@ function Controller($scope, StorageService) {
     completadas = [];
     totalCartas = null;
     cronometro = true;
+    vm.rodada = 0;
+  }
+
+  function getTipo() {
+    vm.tipo = StorageService.getTipo();
+  }
+
+  function isRodada() {
+    return vm.tipo === "rodada";
   }
 
   function carregaImagens() {
@@ -59,6 +70,9 @@ function Controller($scope, StorageService) {
   function verificaCarta(index) {
     if (!selecionadas.length) return selecionadas.push(index);
     selecionadas.push(index);
+
+    if (isRodada()) vm.rodada++;
+
     if (!verificaCartaIgual()) return desviraCartasSelecionadas();
     return salvaCartasCertas();
   }
@@ -93,25 +107,27 @@ function Controller($scope, StorageService) {
 
     pararCronometro();
     setTimeout(() => {
-      mostraTempoFinal();
+      mostraResultadoFinal();
       $scope.$apply();
     }, 1000);
   }
 
-  function mostraTempoFinal() {
-    StorageService.adicionaNovoRanking(vm.nome, vm.tempo);
+  function mostraResultadoFinal() {
+    let value = isRodada() ? vm.rodada : vm.tempo;
+    StorageService.adicionaNovoRanking(vm.nome, value);
     vm.estado = vm.JOGOCOMPLETADO;
   }
 
   function iniciarNovoJogo() {
     zeraVariaveis();
     vm.estado = NOVOJOGO;
-    iniciaCronometro();
     vm.cartas = angular
       .copy(images)
       .concat(angular.copy(images))
       .sort(misturaImagens);
     totalCartas = vm.cartas.length;
+
+    if (!isRodada()) iniciaCronometro();
 
     function misturaImagens() {
       let a = Math.floor(Math.random() * 60);

@@ -4,7 +4,8 @@
 >
   <div class="container">
     <div class="container">
-      <h1>{{ vm.tempo | customTime }}</h1>
+      <h1 ng-if="!vm.isRodada()">{{ vm.tempo | customTime }}</h1>
+      <h1 ng-if="vm.isRodada()">{{ vm.rodada }}</h1>
     </div>
   </div>
 </header>
@@ -58,8 +59,11 @@
   <div class="card bg-info">
     <div class="card-body text-center">
       <h2>Parabéns</h2>
-      <p class="card-text">
+      <p class="card-text" ng-if="!vm.isRodada()">
         Seu tempo foi: <b>{{ vm.tempo | customTime }}</b>
+      </p>
+      <p class="card-text" ng-if="vm.isRodada()">
+        Você conseguiu em <b>{{ vm.rodada }}</b> rodadas.
       </p>
 
       <button

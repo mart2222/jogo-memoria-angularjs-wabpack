@@ -1,32 +1,47 @@
 module.exports = Service;
 
-const STORAGE = "projetoDB1";
+const RANKRODADA = "projetoDB1Rodada";
+const RANKTEMPO = "projetoDB1Tempo";
+const TIPO = "projetoDB1Tipo";
 
 Service.$inject = [];
 
 function Service() {
   const self = this;
 
-  let storage = getStorage();
+  let rodadas = getStorageRodadas();
+  let tempos = getStorageTempos();
 
-  self.adicionaNovoRanking = (nome, tempo) => {
-    storage.push({ nome, tempo });
-    refreshStorage();
+  self.adicionaNovoRanking = (nome, value) => {
+    if (isRodada()) {
+      rodadas.push({ nome, value });
+      return localStorage.setItem(RANKRODADA, JSON.stringify(rodadas));
+    }
+    tempos.push({ nome, value });
+    return localStorage.setItem(RANKTEMPO, JSON.stringify(tempos));
   };
 
   self.getRanking = () => {
-    return storage.sort(ordenaTempoMenor).slice(0, 10);
+    if (isRodada()) return rodadas.sort(ordenaValueMenor).slice(0, 10);
+    return tempos.sort(ordenaValueMenor).slice(0, 10);
   };
 
-  function refreshStorage() {
-    localStorage.setItem(STORAGE, JSON.stringify(storage));
+  function getStorageRodadas() {
+    return JSON.parse(localStorage.getItem(RANKRODADA)) || [];
   }
 
-  function getStorage() {
-    return JSON.parse(localStorage.getItem(STORAGE)) || [];
+  function getStorageTempos() {
+    return JSON.parse(localStorage.getItem(RANKTEMPO)) || [];
   }
 
-  function ordenaTempoMenor(a, b) {
-    return a.tempo > b.tempo ? 1 : -1;
+  function ordenaValueMenor(a, b) {
+    return a.value > b.value ? 1 : -1;
   }
+
+  function isRodada() {
+    return self.getTipo() === "rodada";
+  }
+
+  self.setTipo = tipo => localStorage.setItem(TIPO, tipo);
+  self.getTipo = tipo => localStorage.getItem(TIPO) || "rodada";
 }
