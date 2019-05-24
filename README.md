@@ -32,6 +32,10 @@
 
 ![](https://raw.githubusercontent.com/mart2222/jogo-memoria-angularjs-wabpack/master/image/3.PNG)
 
+![](https://raw.githubusercontent.com/mart2222/jogo-memoria-angularjs-wabpack/master/image/4.PNG)
+
+![](https://raw.githubusercontent.com/mart2222/jogo-memoria-angularjs-wabpack/master/image/5.PNG)
+
 ---
 
 Abaixo as referências das imagens utilizadas:
