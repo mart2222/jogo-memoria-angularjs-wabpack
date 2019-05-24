@@ -16,6 +16,12 @@
 
 ---
 
+## Gerar arquivos
+
+`$ npm run build`
+
+---
+
 ### Pré visualização
 
 ---
