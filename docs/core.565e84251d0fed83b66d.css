@@ -1,0 +1,86 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+header {
+  padding-top: 56px;
+}
+
+.btn {
+  border: 1px solid white;
+}
+
+.scene {
+  width: 100px;
+  height: 100px;
+  perspective: 200px;
+  padding: 5px;
+}
+
+.carta {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.carta.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.carta__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  backface-visibility: hidden;
+  box-shadow: 1px 1px 5px black;
+  border-radius: 5px;
+}
+
+.carta__face--front {
+  background: url(images/textura.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.carta__face--back {
+  transform: rotateY(180deg);
+}
+
+.linha-rank {
+  display: flex;
+}
+.card-rank {
+  margin-top: 5px;
+  line-height: 1;
+}
+
+.card-rank-title {
+  border-bottom: 2px solid #007bff;
+}
+
+.tela {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.s-center {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+}
+
+.s-center form {
+  justify-content: center;
+}
+
