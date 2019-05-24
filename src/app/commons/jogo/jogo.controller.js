@@ -3,7 +3,7 @@ const angular = require("angular");
 const NOVOJOGO = "NOVOJOGO";
 const SELECAONOME = "SELECAONOME";
 const JOGOCOMPLETADO = "JOGOCOMPLETADO";
-const TOTALIMAGENS = 2;
+const TOTALIMAGENS = 15;
 
 module.exports = Controller;
 
