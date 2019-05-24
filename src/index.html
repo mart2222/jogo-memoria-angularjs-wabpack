@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="db1" lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Jogo da memória</title>
+    <meta
+      name="description"
+      content="Projeto Djeison Zanette jogo da memória"
+    />
+    <meta name="viewport" content="width=device-width" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script src="http://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+  </head>
+
+  <body class="bg-primary">
+    <!--[if lt IE 9]>
+      <p class="alert-danger well">
+        Você está usando um navegador <strong>desatualizado</strong>. Por favor
+        <a href="http://browsehappy.com/">atualize seu navegador</a> para
+        melhorar sua experiência.
+      </p>
+    <![endif]-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Djeison</a>
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarsExampleDefault" style="">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="" ui-sref="main.home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" ui-sref="main.jogo">Jogar</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div data-ui-view></div>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<header
+  class="masthead bg-primary text-white text-center"
+  ng-if="vm.estado === vm.NOVOJOGO"
+>
+  <div class="container">
+    <div class="container">
+      <h1>{{ vm.tempo | customTime }}</h1>
+    </div>
+  </div>
+</header>
+
+<section class="bg-primary text-white mb-0" ng-if="vm.estado === vm.NOVOJOGO">
+  <div class="container tela">
+    <app-carta
+      ng-repeat="carta in vm.cartas track by $index"
+      carta="carta"
+      click="vm.selecionaCarta(carta, $index)"
+      >*{{ carta }}*</app-carta
+    >
+  </div>
+</section>
+
+<div
+  class="d-flex justify-content-center align-items-center s-center"
+  style="min-height: 200px;"
+  ng-if="vm.estado === vm.SELECAONOME"
+>
+  <div class="card bg-info">
+    <div class="card-body text-center">
+      <p class="card-text">Insira seu nome</p>
+      <form class="form-inline my-4 my-lg-0" name="form">
+        <input
+          class="form-control mr-sm-2"
+          required
+          type="text"
+          maxlength="20"
+          ng-model="vm.nome"
+          placeholder="Nome"
+        />
+        <button
+          class="btn btn-success my-2 my-sm-0"
+          type="button"
+          ng-disabled="form.$invalid"
+          ng-click="vm.iniciarNovoJogo()"
+        >
+          Começar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="d-flex justify-content-center align-items-center s-center"
+  style="min-height: 200px;"
+  ng-if="vm.estado === vm.JOGOCOMPLETADO"
+>
+  <div class="card bg-info">
+    <div class="card-body text-center">
+      <h2>Parabéns</h2>
+      <p class="card-text">
+        Seu tempo foi: <b>{{ vm.tempo | customTime }}</b>
+      </p>
+
+      <button
+        class="btn btn-success my-2 my-sm-0"
+        type="button"
+        ng-click="vm.iniciarNovoJogo()"
+      >
+        Jogar novamente
+      </button>
+
+      <button
+        class="btn btn-success my-2 my-sm-0"
+        type="button"
+        ui-sref="main.home"
+      >
+        Ir para ranking
+      </button>
+    </div>
+  </div>
+</div>

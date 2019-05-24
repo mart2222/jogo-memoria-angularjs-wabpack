@@ -1,0 +1,55 @@
+<header class="masthead bg-primary text-white text-center">
+  <div class="container">
+    <img class="img-fluid mb-5 d-block mx-auto" alt="" />
+    <h1 class="text-uppercase mb-2">Jogo da memória</h1>
+    <button
+        class="btn btn-success my-2 my-sm-0"
+        type="button"
+        ui-sref="main.jogo"
+      >
+        Jogar
+      </button>
+    <hr class="star-light mb-0" />
+  </div>
+</header>
+
+<section class="bg-primary text-white mb-0 pt-3 pb-5">
+  <div class="container">
+    <h2 class="text-center text-uppercase text-white">Ranking</h2>
+    <hr class="star-light mb-3" />
+    <h3 class="text-center text-uppercase text-white pb-2">TOP 10</h3>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card bg-info" ng-if="vm.ranking.length">
+          <div class="text-center card-rank card-rank-title">
+            <div class="linha-rank">
+              <p class="lead">
+                  <div class="col">Posição</div>
+                  <div class="col">Jogador</div>
+                  <div class="col">Tempo</div>
+              </p>
+            </div>
+            <hr class="star-light mb-0 mt-2" />
+          </div>
+          <div class="text-center card-rank" ng-repeat="rank in vm.ranking track by $index">
+            <div class="linha-rank">
+              <p class="lead">
+                  <div class="col">{{$index + 1}}</div>
+                  <div class="col">{{rank.nome}} </div>
+                  <div class="col">{{rank.tempo | customTime}} </div>
+              </p>
+            </div>
+            <hr class="star-light mb-0 mt-2" />
+          </div>          
+        </div>
+        <div class="card bg-info" ng-if="!vm.ranking.length">
+          <div class="text-center card-rank ">
+            <p class="lead">
+              Rank zerado
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

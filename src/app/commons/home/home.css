@@ -1,0 +1,11 @@
+.linha-rank {
+  display: flex;
+}
+.card-rank {
+  margin-top: 5px;
+  line-height: 1;
+}
+
+.card-rank-title {
+  border-bottom: 2px solid #007bff;
+}

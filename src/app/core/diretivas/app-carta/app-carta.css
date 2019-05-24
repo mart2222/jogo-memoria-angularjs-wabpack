@@ -1,0 +1,38 @@
+.scene {
+  width: 100px;
+  height: 100px;
+  perspective: 200px;
+  padding: 5px;
+}
+
+.carta {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.carta.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.carta__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  backface-visibility: hidden;
+  box-shadow: 1px 1px 5px black;
+  border-radius: 5px;
+}
+
+.carta__face--front {
+  background: url("../../../../assets/img/textura.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.carta__face--back {
+  transform: rotateY(180deg);
+}
