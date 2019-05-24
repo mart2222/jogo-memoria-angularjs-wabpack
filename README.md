@@ -48,5 +48,3 @@ Abaixo as referências das imagens utilizadas:
 - http://www.zoovet.com.br/consultas-veterinarias/cirurgias-para-animais/clinica-para-fazer-cesarea-de-gatas/clinica-para-cirurgia-veterinaria-em-animais-exoticos-jardim-arpoador
 
 ### Obrigado! :100:
-
-### 70% of our users are developers. Developers :heart: GitHub.
